@@ -20,8 +20,9 @@ import kotlin.coroutines.resume
 
 /** Eventos de conexão física vindos do sistema. */
 sealed interface UsbEvent {
-    data class Attached(val device: UsbDevice) : UsbEvent
-    data class Detached(val device: UsbDevice) : UsbEvent
+    val device: UsbDevice
+    data class Attached(override val device: UsbDevice) : UsbEvent
+    data class Detached(override val device: UsbDevice) : UsbEvent
 }
 
 /**
